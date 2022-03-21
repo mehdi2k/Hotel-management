@@ -1,0 +1,159 @@
+<odoo>
+
+ <record model="ir.actions.act_window" id="hotel_list_action">
+   <field name="name">floor</field>
+   <field name="res_model">hotel.floor</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+    <p class="o_view_nocontent_smiling_face">Create the first course </p>
+   </field>
+ </record>
+
+ <menuitem id="main_hotel_menu" name="hotel"/>
+ <menuitem id="hotel_menu" name="hotel" parent="main_hotel_menu"/>
+ <menuitem id="floor_menu" name="Floor" parent="hotel_menu"
+           action="hotel_list_action"/>
+
+
+
+
+    <record id="view_room_type_form" model="ir.ui.view">
+   <field name="name">room.type.form</field>
+   <field name="model">room.type</field>
+   <field name="arch" type="xml">
+
+<form string="room type">
+    <group colspan="4">
+        <group colspan="2" col="2">
+            <separator string="room type" colspan="2"/>
+            <field name="name"/>
+            <field name="categ_id"/>
+            <field name="child_ids"/>
+
+        </group>
+
+        <notebook colspan="4">
+            <page string="description">
+               <field name="description"/>
+            </page>
+        </notebook>
+    </group>
+</form>
+   </field>
+ </record>
+
+
+     <record model="ir.actions.act_window" id="roomtype_list_action">
+   <field name="name">Room type</field>
+   <field name="res_model">room.type</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+    <p class="o_view_nocontent_smiling_face">Create the first course </p>
+   </field>
+ </record>
+
+<menuitem id="room_list_menu" name="ROOM" parent="hotel_menu" />
+ <menuitem id="roomtype_menu" name="Room type" parent="room_list_menu"
+           action="roomtype_list_action" sequence="20"/>
+
+
+    <record model="ir.actions.act_window" id="room_list_action">
+   <field name="name">Room</field>
+   <field name="res_model">hotel.room</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+    <p class="o_view_nocontent_smiling_face">Create the first course </p>
+   </field>
+ </record>
+
+ <menuitem id="room_menu" name="Room" parent="room_list_menu"
+           action="room_list_action" />
+
+
+
+
+
+
+
+<record id="view_hotel_room_form" model="ir.ui.view">
+   <field name="name">hotel.reservation.form</field>
+   <field name="model">hotel.reservation</field>
+   <field name="arch" type="xml">
+
+<form string="hotel reservation">
+   <sheet>
+    <group>
+        <field name="image" widget="image" class="oe_avatar"/>
+        <div class="oe_title">
+        <label for="name" string="Name"/>
+        <h1>
+        <field name="name"/>
+        </h1>
+        </div>
+        <newline/>
+        <group>
+            <separator string="Client information"/>
+            <field name="phone"/>
+            <field name="email"/>
+            <field name="address"/>
+            <field name="identity"/>
+        </group>
+        <group colspan="2">
+            <separator string="reservation"/>
+               <field name="room_id"/>
+               <field name="price"/>
+                <field name="start_date"/>
+                <field name="days"/>
+                <field name="total"/>
+        </group>
+
+    </group>
+    </sheet>
+</form>
+   </field>
+ </record>
+
+   <record id="reservation_tree" model="ir.ui.view">
+    <field name="name">reservation_tree.tree</field>
+    <field name="model">hotel.reservation</field>
+    <field name="arch" type="xml">
+     <tree>
+      <field name="name"/>
+      <field name="phone"/>
+      <field name="email"/>
+      <field name="address"/>
+     </tree>
+    </field>
+   </record>
+
+   <record model="ir.actions.act_window" id="reservation_list_action">
+      <field name="name">Reservation</field>
+      <field name="res_model">hotel.reservation</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Create the first course </p>
+      </field>
+   </record>
+
+   <menuitem id="reservation_main_menu" name="Reservation" parent="main_hotel_menu"
+              sequence="1"/>
+
+   <menuitem id="reservation_menu" name="Reservation" parent="reservation_main_menu"
+           action="reservation_list_action" />
+
+
+
+     <record model="ir.actions.act_window" id="client_list_action">
+   <field name="name">Client</field>
+   <field name="res_model">hotel.client</field>
+   <field name="view_mode">tree,form</field>
+   <field name="help" type="html">
+    <p class="o_view_nocontent_smiling_face">Create the first course </p>
+   </field>
+ </record>
+
+ <menuitem id="client_menu" name="folio" parent="reservation_main_menu"
+           action="client_list_action"/>
+
+
+</odoo>

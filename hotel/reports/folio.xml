@@ -1,0 +1,64 @@
+<odoo>
+
+<template id="report_hotel_folio">
+<t t-call="web.html_container">
+<t t-call="web.external_layout">
+<div class="page">
+<br/>
+<br/>
+<div class="row mt32 mb32">
+<h4>
+<span>
+<center>Total Collection</center>
+</span>
+</h4>
+</div>
+<div class="row mt32 mb32">
+<div class="text-center">
+</div>
+</div>
+<table class="table table-condensed">
+<tr>
+<td>
+<strong>Folio No.</strong>
+</td>
+<td>
+<strong>Customer Name</strong>
+</td>
+<td>
+<strong>days</strong>
+</td>
+<td>
+<strong>Total</strong>
+</td>
+</tr>
+<tr t-foreach="docs" t-as="folio">
+<td>
+<span t-esc="folio.folio_id"/>
+</td>
+<td>
+<span t-esc="folio.client"/>
+</td>
+<td>
+<span t-esc="folio.days"/>
+</td>
+</tr>
+<tr>
+<td/>
+<td/>
+<td/>
+<td>
+<strong>Net Total:</strong>
+</td>
+<td>
+<t t-foreach="docs" t-as="folio">
+<t t-esc="folio.price"/>
+</t>
+</td>
+</tr>
+</table>
+</div>
+</t>
+</t>
+</template>
+</odoo>
